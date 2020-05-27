@@ -25,9 +25,11 @@
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities.Core" />
     <Reference Include="System.Reflection.Metadata"  Condition="'$(TargetFramework)'=='net46'" />
-
-    <Reference Include="Microsoft.AspNetCore.Mvc.Razor.Extensions" ReferenceOutputAssembly="false" Condition="'$(TargetFramework)'=='$(DefaultNetCoreTargetFramework)'" />
     <Reference Include="rzc" ReferenceOutputAssembly="false" Condition="'$(TargetFramework)'=='$(DefaultNetCoreTargetFramework)'" />
+
+    <ProjectReference Include="..\..\Microsoft.AspNetCore.Mvc.Razor.Extensions\src\Microsoft.AspNetCore.Mvc.Razor.Extensions.csproj" ReferenceOutputAssembly="false" >
+      <SetTargetFramework>TargetFramework=netstandard2.0</SetTargetFramework>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -54,11 +56,6 @@
       Projects="..\..\Microsoft.AspNetCore.Razor.Tools\src\Microsoft.AspNetCore.Razor.Tools.csproj"
       Properties="PublishDir=$(SdkOutputPath)temp;TargetFramework=netcoreapp3.0"
       Targets="Publish"
-      ContinueOnError="true"  />
-    <MSBuild
-      Projects="..\..\Microsoft.AspNetCore.Mvc.Razor.Extensions\src\Microsoft.AspNetCore.Mvc.Razor.Extensions.csproj"
-      Properties="TargetFramework=netstandard2.0"
-      Targets="Build"
       ContinueOnError="true"  />
 
     <ItemGroup>
